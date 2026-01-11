@@ -26,34 +26,51 @@
   </header>
 
   <main>
-    <section id="hero" class="hero section">
-      <div class="hero-bg-overlay"></div>
+    <section id="hero" class="hero">
+      <div class="hero-bg-media">
+        <div class="hero-bg-overlay-gradient"></div>
+        <div class="hero-bg-text-scrolling">HR DOC SUITE STANDARD</div>
+      </div>
+      
       <div class="container hero-inner">
-        <div class="hero-content">
-          <p class="hero-label">DOCUMENT × STANDARD</p>
-          <h1 class="hero-title">採用と評価の"書類作り"に、<br>共通の型を。</h1>
-          <p class="hero-lead">
-            人が増えるほど、書類も増える。HR DOC SUITE は、中小企業の人事・経営者向けに、採用・評価に必要なドキュメントの型をまとめて提供する月額制のテンプレートサービスです。
-          </p>
-          <div class="cta-row">
-            <a class="btn btn-entry-hero" href="#cta">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-              ENTRY →
-            </a>
+        <div class="hero-glass-panel">
+          <div class="hero-content">
+            <p class="hero-label">/ DOCUMENT × STANDARD /</p>
+            <h1 class="hero-title">
+              <span class="t-line">採用と評価の</span><br>
+              <span class="t-line">"書類作り"に、</span><br>
+              <span class="t-line">共通の型を。</span>
+            </h1>
+            <p class="hero-lead">
+              人が増えるほど、書類も増える。HR DOC SUITE は、中小企業の人事・経営者向けに、採用・評価に必要なドキュメントの型をまとめて提供する月額制のテンプレートサービスです。
+            </p>
+            <div class="cta-row">
+              <a class="btn btn-entry-hero" href="#cta">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                ENTRY →
+              </a>
+            </div>
           </div>
         </div>
         
         <div class="hero-visual-wrap">
-          <div class="hero-shape">
-            <div class="mock-card">
-              <p class="mock-title">Evaluation Sheet</p>
-              <div class="mock-lines wide"></div>
-              <div class="mock-lines"></div>
-              <div class="mock-lines short"></div>
-              <div class="mock-lines"></div>
+          <div class="hero-main-visual">
+            <div class="hero-slider">
+              <img src="images/hero-1.png" alt="ドキュメント作成の様子" class="hero-v-img active">
+              <img src="images/hero-2.png" alt="社内ミーティングの様子" class="hero-v-img">
             </div>
+            <div class="hero-visual-overlay"></div>
+          </div>
+          <div class="hero-floating-elements">
+            <div class="floating-item item-1"></div>
+            <div class="floating-item item-2"></div>
           </div>
         </div>
+      </div>
+
+      <div class="hero-scroll-indicator">
+        <span class="scroll-text">SCROLL</span>
+        <div class="scroll-line"></div>
       </div>
     </section>
 
@@ -190,7 +207,6 @@
 
     <section id="voices" class="section voice-section">
       <div class="voice-bg-overlay"></div>
-      <div class="voice-bg-text">VOICE</div>
       
       <div class="container voice-container">
         <div class="voice-header">
@@ -265,6 +281,14 @@
     </section>
 
     <section id="services" class="service-section">
+      <!-- Custom Cursor for Service Section -->
+      <div class="service-cursor" id="serviceCursor">
+        <div class="cursor-doc">
+          <div class="cursor-lines"></div>
+          <span class="cursor-text">DOWNLOAD NOW</span>
+        </div>
+      </div>
+
       <div class="service-header-sticky">
         <p class="service-label">/ サービス内容 /</p>
         <h2 class="service-title">SERVICE</h2>
@@ -272,7 +296,6 @@
 
       <!-- Strip 1: Recruitment -->
       <div class="service-strip recruit">
-        <div class="strip-bg-text">RECRUIT</div>
         <div class="container">
           <div class="strip-content">
             <span class="strip-num">01</span>
@@ -288,8 +311,7 @@
       </div>
 
       <!-- Strip 2: Evaluation -->
-      <div class="service-strip evaluate">
-        <div class="strip-bg-text">EVALUATE</div>
+      <div class="service-strip evaluate reverse">
         <div class="container">
           <div class="strip-content">
             <span class="strip-num">02</span>
@@ -306,7 +328,6 @@
 
       <!-- Strip 3: Growth -->
       <div class="service-strip growth">
-        <div class="strip-bg-text">GROWTH</div>
         <div class="container">
           <div class="strip-content">
             <span class="strip-num">03</span>
@@ -359,27 +380,27 @@
 
           <!-- 右カラム：ステップカード -->
           <div class="flow-steps">
-            <div class="step-card">
+            <div class="step-card" data-step="1">
               <h3>会員登録</h3>
               <p>メールアドレスとパスワードでアカウント作成。</p>
             </div>
-            <div class="step-card">
+            <div class="step-card" data-step="2">
               <h3>プラン選択</h3>
               <p>ベーシック／スタンダード／プロから選択し、クレジットカードで決済。</p>
             </div>
-            <div class="step-card">
+            <div class="step-card" data-step="3">
               <h3>テンプレートのダウンロード</h3>
               <p>マイページから、必要なフォーマットをダウンロード。</p>
             </div>
-            <div class="step-card">
+            <div class="step-card" data-step="4">
               <h3>自社向けに編集</h3>
               <p>社名や評価基準、職種名などを自社向けに書き換える。</p>
             </div>
-            <div class="step-card">
+            <div class="step-card" data-step="5">
               <h3>社内展開・運用開始</h3>
               <p>評価スケジュールに合わせて実際の運用をスタート。</p>
             </div>
-            <div class="step-card">
+            <div class="step-card" data-step="6">
               <h3>毎月のアップデートを反映</h3>
               <p>新規テンプレや改訂版を確認し、必要に応じて差し替え。</p>
             </div>
@@ -483,7 +504,10 @@
                 <li>導入ガイドPDF</li>
               </ul>
               <div class="plan-action">
-                <a class="btn btn-outline" href="#cta">このプランで検討</a>
+                <a class="btn btn-entry-hero" href="#cta">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                  このプランで検討
+                </a>
               </div>
             </div>
             <details class="plan-details-toggle">
@@ -540,7 +564,10 @@
                 <li>運用チェックリスト／社内説明資料</li>
               </ul>
               <div class="plan-action">
-                <a class="btn btn-primary" href="#cta">まずはスタンダード</a>
+                <a class="btn btn-entry-hero" href="#cta">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                  まずはスタンダード
+                </a>
               </div>
             </div>
             <details class="plan-details-toggle">
@@ -597,7 +624,10 @@
                 <li>評価スケジュール表／経営層説明資料</li>
               </ul>
               <div class="plan-action">
-                <a class="btn btn-outline" href="#cta">高度化を進める</a>
+                <a class="btn btn-entry-hero" href="#cta">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                  高度化を進める
+                </a>
               </div>
             </div>
             <details class="plan-details-toggle">
@@ -654,8 +684,8 @@
             <h2 class="cta-title">ENTRY</h2>
             <p class="cta-subtitle">採用と評価の"ドキュメント作り"を、標準化しませんか。</p>
             <div class="cta-button-wrapper">
-              <a href="#" class="btn btn-entry-cta">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+              <a href="#" class="btn btn-entry-hero">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                 ENTRY →
               </a>
             </div>

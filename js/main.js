@@ -8,12 +8,132 @@ window.addEventListener('scroll', () => {
 
   if (scrollPos > heroHeight) {
     header.classList.add('scrolled');
-    floatingBar.classList.add('visible');
+    if (floatingBar) floatingBar.classList.add('visible');
   } else {
     header.classList.remove('scrolled');
-    floatingBar.classList.remove('visible');
+    if (floatingBar) floatingBar.classList.remove('visible');
+  }
+
+  // HERO & PROBLEM 究極のパララックス
+  const heroInner = document.querySelector('.hero-inner');
+  const heroBgText = document.querySelector('.hero-bg-text-scrolling');
+  const heroMainVisual = document.querySelector('.hero-main-visual');
+  const glassPanel = document.querySelector('.hero-glass-panel');
+  
+  if (heroInner) {
+    const heroSpeed = scrollPos * 0.4;
+    heroInner.style.transform = `translateY(${heroSpeed}px)`;
+    heroInner.style.opacity = 1 - scrollPos / 800;
+  }
+  
+  if (heroBgText) {
+    heroBgText.style.transform = `translate(-50%, calc(-50% + ${scrollPos * 0.15}px))`;
+  }
+  
+  if (heroMainVisual) {
+    heroMainVisual.style.transform = `perspective(1000px) rotateY(-10deg) rotateX(5deg) translateY(${scrollPos * -0.1}px)`;
+  }
+
+  if (glassPanel) {
+    glassPanel.style.transform = `translateY(${scrollPos * -0.05}px)`;
+  }
+
+  // PROBLEM 背景パララックス強化
+  const problemSection = document.getElementById('empathy');
+  if (problemSection) {
+    const rect = problemSection.getBoundingClientRect();
+    const sectionScroll = window.innerHeight - rect.top;
+    if (sectionScroll > 0) {
+      problemSection.style.backgroundPositionY = `${-sectionScroll * 0.2}px`;
+    }
   }
 });
+
+// HERO スライダー
+const heroImages = document.querySelectorAll('.hero-v-img');
+if (heroImages.length > 0) {
+  let currentImg = 0;
+  setInterval(() => {
+    heroImages[currentImg].classList.remove('active');
+    currentImg = (currentImg + 1) % heroImages.length;
+    heroImages[currentImg].classList.add('active');
+  }, 5000);
+}
+
+// SERVICEセクション カスタムカーソル
+const serviceSection = document.querySelector('.service-section');
+const serviceCursor = document.getElementById('serviceCursor');
+
+if (serviceSection && serviceCursor) {
+  let mouseX = 0;
+  let mouseY = 0;
+  let cursorX = 0;
+  let cursorY = 0;
+  let isActive = false;
+  let isMoving = false;
+
+  // カーソル位置の更新
+  const updateMousePosition = (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // 初回移動時にカーソルがジャンプするのを防ぐ
+    if (!isMoving) {
+      cursorX = mouseX;
+      cursorY = mouseY;
+      isMoving = true;
+    }
+  };
+
+  serviceSection.addEventListener('mousemove', updateMousePosition, { passive: true });
+
+  serviceSection.addEventListener('mouseenter', (e) => {
+    isActive = true;
+    updateMousePosition(e);
+    serviceCursor.classList.add('active');
+    serviceSection.style.cursor = 'pointer'; // カーソルをpointerに変更
+  });
+
+  serviceSection.addEventListener('mouseleave', () => {
+    isActive = false;
+    serviceCursor.classList.remove('active');
+    isMoving = false;
+    serviceSection.style.cursor = ''; // カーソルを戻す
+  });
+
+  // サービスセクションクリック時のリンク機能
+  serviceSection.addEventListener('click', (e) => {
+    if (isActive) {
+      window.location.href = '#cta';
+    }
+  });
+
+  function animateCursor() {
+    if (isActive || isMoving) {
+      // スムーズかつ高速な追従 (Lerp) - 0.28に引き上げ
+      const lerpFactor = 0.28;
+      cursorX += (mouseX - cursorX) * lerpFactor;
+      cursorY += (mouseY - cursorY) * lerpFactor;
+      
+      // スクロール位置による表示制御（FLOWセクション接近時に早めに消す）
+      const rect = serviceSection.getBoundingClientRect();
+      const hideThreshold = 120; // セクション下端から120px手前で消し始める
+      
+      if (rect.bottom < hideThreshold) {
+        serviceCursor.classList.remove('active');
+      } else if (isActive) {
+        serviceCursor.classList.add('active');
+      }
+
+      // 標準カーソルの右下に配置されるようにオフセット(25px)を追加
+      serviceCursor.style.transform = `translate3d(${cursorX + 25}px, ${cursorY + 25}px, 0) translate(-50%, -50%)`;
+    }
+    
+    requestAnimationFrame(animateCursor);
+  }
+  
+  animateCursor();
+}
 
 const reasonImageArea = document.querySelector('.reason-image');
 const reasonItems = document.querySelectorAll('.reason-item');
@@ -50,6 +170,8 @@ if (flowSection && flowLine && flowAnimatedArrow) {
   let rafId = null;
   
   function alignStepNumbers() {
+    if (window.innerWidth < 768) return;
+    
     if (flowStepCards.length > 0 && flowStepNumbers.length > 0) {
       const flowSteps = document.querySelector('.flow-steps');
       const flowLineInner = document.querySelector('.flow-line-inner');
@@ -78,6 +200,10 @@ if (flowSection && flowLine && flowAnimatedArrow) {
     }
     
     rafId = requestAnimationFrame(() => {
+      if (window.innerWidth < 768) {
+        rafId = null;
+        return;
+      }
       const rect = flowSection.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       const sectionTop = rect.top;

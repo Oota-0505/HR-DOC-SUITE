@@ -191,9 +191,9 @@ p {
 }
 
 .site-header.scrolled {
-  background: rgba(255, 255, 255, 0.9); /* スクロール後は白（すりガラス） */
+  background: rgba(255, 255, 255, 0.98); /* 透明度を下げて白と一体化しないように */
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08); /* シャドウを少し強めて境界をはっきりさせる */
   padding: 6px 0;
 }
 
@@ -363,138 +363,256 @@ p {
 
 /* Hero */
 .hero {
-  background: #0d1b3e; /* Deep Navy Base */
-  background: radial-gradient(circle at 70% 30%, #1a3a75 0%, #0d1b3e 70%);
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
   overflow: hidden;
-  padding: 120px 0 160px; /* 余白大きく */
+  background: #0d1b3e;
+  padding: 140px 0 100px;
   color: #fff;
 }
 
-/* オーバーレイ装飾 */
-.hero-bg-overlay {
+/* 没入型背景メディア */
+.hero-bg-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-bg-overlay-gradient {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: 
-    linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 40%),
-    linear-gradient(-45deg, rgba(37,99,235,0.1) 0%, transparent 40%);
-  z-index: 0;
-  pointer-events: none;
+    radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(30, 58, 138, 0.2) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(13, 27, 62, 0.8) 0%, #0d1b3e 100%);
+  z-index: 2;
 }
 
-/* 幾何学的なカッティング（右側） */
-.hero::after {
-  content: "";
+.hero-bg-text-scrolling {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.05) 0%, transparent 60%);
-  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
-  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-en);
+  font-size: 25vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  letter-spacing: -0.05em;
+  animation: heroTextScroll 60s linear infinite;
+}
+
+@keyframes heroTextScroll {
+  0% { transform: translate(-20%, -50%); }
+  100% { transform: translate(-80%, -50%); }
 }
 
 .hero-inner {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr; /* テキストエリアを広く */
-  gap: 40px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
   align-items: center;
 }
 
-/* コンテンツエリア */
-.hero-content {
+/* グラスパネル演出 */
+.hero-glass-panel {
   position: relative;
-  z-index: 2;
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: heroPanelFadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Hero Content Typography */
+@keyframes heroPanelFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .hero-label {
-  font-family: var(--font-heading);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-black);
-  letter-spacing: 0.2em;
+  font-family: var(--font-jp);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   color: var(--blue-light);
-  margin-bottom: var(--spacing-lg);
-  text-transform: uppercase;
+  margin-bottom: 24px;
   display: block;
+  opacity: 0.8;
 }
 
 .hero-title {
-  font-family: var(--font-jp);
-  font-size: clamp(2.5rem, 4vw + 1rem, 4.5rem); /* 日本語用に調整 */
-  line-height: 1.4; /* 日本語は少し広めに */
-  font-weight: var(--font-weight-bold);
-  margin: 0 0 var(--spacing-xl);
-  color: #fff;
-  letter-spacing: 0.02em; /* 日本語は少し広め */
-}
-
-
-/* CTA Buttons in Hero */
-.hero .cta-row {
-  margin-top: 30px;
-}
-
-/* Unified Entry Button Styles */
-.btn-entry-hero,
-.btn-entry-cta {
-  background: linear-gradient(90deg, var(--cyan), var(--blue));
-  color: var(--white);
-  font-size: var(--font-size-lg);
-  padding: var(--spacing-md) 40px;
-  border-radius: var(--radius-lg);
-  font-weight: var(--font-weight-black); /* より太く */
   font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.5vw + 1rem, 3.8rem);
+  line-height: 1.5;
+  font-weight: 800;
+  margin-bottom: 32px;
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+
+.hero-title .t-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero-lead {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 48px;
+  max-width: 540px;
+}
+
+/* 共通ボタンスタイル (HERO, CTA, PLAN) */
+.btn-entry-hero {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%);
+  color: #fff;
+  padding: 18px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.05rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-xs);
-  box-shadow: 0 10px 25px rgba(34, 211, 238, 0.4);
-  transition: all 0.3s ease;
-  border: none;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
   letter-spacing: 0.05em;
-  text-transform: uppercase;
+  width: 100%; /* カード内での幅いっぱいをデフォルトに */
+  max-width: 400px; /* HEROなどでの広がりすぎ防止 */
 }
 
-.btn-entry-hero:hover,
-.btn-entry-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 35px rgba(34, 211, 238, 0.5);
+/* HEROやCTAなど、特定の場所では幅を自動調整 */
+.cta-row .btn-entry-hero,
+.cta-button-wrapper .btn-entry-hero {
+  width: auto;
+  min-width: 240px;
 }
 
-.btn-entry-cta {
-  padding: var(--spacing-md) var(--spacing-2xl);
-  gap: 10px;
+.btn-entry-hero:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4);
+  background: linear-gradient(135deg, var(--blue-light) 0%, var(--blue) 100%);
 }
 
-/* 右側ビジュアル */
+/* 右側ビジュアル演出 */
 .hero-visual-wrap {
   position: relative;
-  height: 400px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
-.hero-shape {
+/* ヒーロー画像の切り替えスライド */
+.hero-slider {
   position: absolute;
-  width: 320px;
-  height: 320px;
-  background: rgba(255,255,255,0.1);
-  transform: rotate(45deg); /* ひし形にする */
-  border: 1px solid rgba(255,255,255,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 0 60px rgba(59, 130, 246, 0.2);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-v-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out, transform 10s ease-out;
+  filter: brightness(0.8) contrast(1.1);
+}
+
+.hero-v-img.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.hero-main-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
+  transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* 浮遊アニメーションはJSで制御するため削除または調整 */
+}
+
+/* 強力なパララックス背景 */
+.problem-section {
+  position: relative;
+  background-image: url('../images/problem-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* 基本のパララックス */
+  padding: 120px 0 100px;
+  overflow: hidden;
+}
+
+.problem-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(13, 27, 62, 0.4) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+@media (max-width: 820px) {
+  .hero {
+    padding: 120px 0 80px;
+    min-height: auto;
+  }
+  
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .hero-glass-panel {
+    padding: 32px 24px;
+    border-radius: 20px;
+    margin: 0 auto; /* 中央寄せ */
+    max-width: 540px; /* 広がりすぎ防止 */
+  }
+  
+  .hero-lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .hero-main-visual {
+    transform: none;
+    animation: none;
+    aspect-ratio: 16/9;
+  }
+  
+  .hero-bg-text-scrolling {
+    font-size: 40vw;
+  }
 }
 
 .hero-shape::before {
@@ -715,10 +833,6 @@ p {
   
   .strip-content h3 {
     font-size: 1.8rem;
-  }
-  
-  .strip-bg-text {
-    font-size: 30vw;
   }
   
   /* FAQ Section */
@@ -1676,62 +1790,9 @@ p {
 }
 
 .plan-action {
-  margin-top: auto;
-  padding-top: 24px;
+  padding-top: 10px;
   border-top: none;
   flex-shrink: 0;
-}
-
-.plan-action .btn {
-  width: 100%;
-  justify-content: center;
-  padding: 14px 28px;
-  font-size: 0.95rem;
-  font-weight: var(--font-weight-bold);
-  border-radius: 10px;
-  border: 2px solid transparent;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: inline-flex;
-  align-items: center;
-  letter-spacing: 0.05em;
-  text-transform: none;
-  font-family: var(--font-jp);
-  position: relative;
-  overflow: hidden;
-}
-
-.plan-action .btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease;
-}
-
-.plan-action .btn:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-.btn-primary,
-.btn-outline {
-  background: var(--navy);
-  color: var(--white);
-  border: 2px solid var(--navy);
-  box-shadow: 0 4px 16px rgba(13, 27, 62, 0.2);
-}
-
-.btn-primary:hover,
-.btn-outline:hover {
-  background: var(--blue);
-  border-color: var(--blue);
-  box-shadow: 0 6px 24px rgba(37, 99, 235, 0.3);
-  transform: translateY(-2px);
 }
 
 .note {
@@ -1765,7 +1826,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(13, 27, 62, 0.94) 0%, rgba(26, 47, 92, 0.90) 50%, rgba(13, 27, 62, 0.94) 100%);
+  background: linear-gradient(180deg, rgba(13, 27, 62, 0.96) 0%, rgba(26, 47, 92, 0.90) 100%);
   z-index: 0;
   pointer-events: none;
 }
@@ -1777,8 +1838,8 @@ p {
   width: 100%;
   height: 100%;
   background: 
-    linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 40%),
-    linear-gradient(-45deg, rgba(37,99,235,0.08) 0%, transparent 40%);
+    linear-gradient(135deg, rgba(37,99,235,0.1) 0%, transparent 50%),
+    linear-gradient(-45deg, rgba(37,99,235,0.08) 0%, transparent 50%);
   z-index: 1;
   pointer-events: none;
 }
@@ -1820,10 +1881,6 @@ p {
   display: flex;
   align-items: flex-start;
   padding-top: 32px;
-}
-
-.cta-button-wrapper .btn-entry-cta {
-  justify-content: center;
 }
 
 .cta-label {
@@ -1891,21 +1948,6 @@ p {
   overflow: hidden;
   padding: 120px 0;
   color: #fff;
-}
-
-.voice-bg-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-en);
-  font-size: 25vw;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.03);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 0;
-  letter-spacing: -0.05em;
 }
 
 .voice-bg-overlay {
@@ -2042,10 +2084,6 @@ p {
   .voice-item p {
     font-size: 0.95rem;
   }
-  
-  .voice-bg-text {
-    font-size: 40vw;
-  }
 }
 
 .problem-section {
@@ -2133,6 +2171,118 @@ p {
 }
 
 /* Service Section (Dynamic Strips) */
+/* Custom Cursor for Service Section */
+/* 究極のカスタムカーソルデザイン */
+.service-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70px; /* サイズを縮小 100px -> 70px */
+  height: 90px; /* サイズを縮小 125px -> 90px */
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(0, 0, 0) scale(0.6);
+  transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
+              visibility 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
+}
+
+.service-cursor.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.cursor-doc {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 4px; /* 小さめサイズに合わせて調整 */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(37, 99, 235, 0.4),
+    inset 0 0 10px rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px; /* 小さめサイズに合わせて調整 */
+  position: relative;
+  overflow: hidden;
+  /* 立体感を出すための斜め配置 */
+  transform: perspective(1000px) rotateY(-15deg) rotateX(10deg) rotateZ(-5deg);
+  transform-style: preserve-3d;
+}
+
+/* 書類表面を流れる光の反射 - アニメーションを洗練 */
+.cursor-doc::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 55%
+  );
+  animation: cursorShine 6s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  pointer-events: none;
+}
+
+@keyframes cursorShine {
+  0% { transform: translate(-30%, -30%); }
+  20% { transform: translate(30%, 30%); }
+  100% { transform: translate(30%, 30%); }
+}
+
+/* 書類のような角の折れ - 立体感を強化 */
+.cursor-doc::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px; /* サイズに合わせて縮小 28px -> 20px */
+  height: 20px; /* サイズに合わせて縮小 28px -> 20px */
+  background: linear-gradient(225deg, rgba(13, 27, 62, 0.1) 50%, #fff 50%);
+  box-shadow: -2px 2px 4px rgba(0,0,0,0.1);
+  border-bottom-left-radius: 3px;
+  z-index: 5;
+}
+
+.cursor-lines {
+  position: absolute;
+  top: 25px; /* サイズに合わせて調整 40px -> 25px */
+  left: 12px;
+  right: 12px;
+  height: 1.5px;
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 2px;
+  box-shadow: 
+    0 6px 0 rgba(37, 99, 235, 0.1), 
+    0 12px 0 rgba(37, 99, 235, 0.1), 
+    0 18px 0 rgba(37, 99, 235, 0.3); /* アクセント */
+}
+
+.cursor-text {
+  font-family: var(--font-en);
+  font-size: 0.55rem; /* サイズに合わせて縮小 0.7rem -> 0.55rem */
+  font-weight: 900;
+  color: var(--blue);
+  letter-spacing: 0.05em;
+  text-align: center;
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
 .service-section {
   position: relative;
   overflow: hidden;
@@ -2170,24 +2320,9 @@ p {
   z-index: 1;
 }
 
-.service-strip.recruit { background-image: url('../images/reason-1.png'); }
-.service-strip.evaluate { background-image: url('../images/reason-2.png'); }
-.service-strip.growth { background-image: url('../images/reason-3.png'); }
-
-.strip-bg-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-en);
-  font-size: 20vw;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.05);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 0;
-  letter-spacing: -0.05em;
-}
+.service-strip.recruit { background-image: url('../images/service-1.png'); }
+.service-strip.evaluate { background-image: url('../images/service-2.png'); }
+.service-strip.growth { background-image: url('../images/service-3.png'); }
 
 .strip-content {
   position: relative;
@@ -2195,6 +2330,21 @@ p {
   color: #fff;
   max-width: 600px;
   padding: 60px 0;
+}
+
+/* 反転レイアウト (02 評価テンプレート用) */
+.service-strip.reverse .container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.service-strip.reverse .strip-content {
+  text-align: left; /* テキスト自体は左揃えを維持 */
+}
+
+/* 背景グラデーションも反転させて右側の視認性を確保 */
+.service-strip.reverse::after {
+  background: linear-gradient(-90deg, rgba(13, 27, 62, 0.94) 0%, rgba(13, 27, 62, 0.4) 100%);
 }
 
 .strip-num {
@@ -2567,11 +2717,10 @@ p {
 /* SP対応 */
 /* Company Section (Blue Gradient Theme) */
 .company-section {
-  background: linear-gradient(135deg, #0d1b3e 0%, #1a2f5c 50%, #0d1b3e 100%);
+  background: linear-gradient(180deg, rgba(26, 47, 92, 0.90) 0%, rgba(13, 27, 62, 0.98) 100%);
   position: relative;
-  overflow: visible; /* Changed to visible for consistency */
+  overflow: visible; 
   color: #fff;
-  /* padding is set in .section.company-section */
 }
 
 .company-section::before {
@@ -2582,8 +2731,8 @@ p {
   width: 100%;
   height: 100%;
   background: 
-    linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 40%),
-    linear-gradient(-45deg, rgba(37,99,235,0.1) 0%, transparent 40%);
+    radial-gradient(circle at top right, rgba(37, 99, 235, 0.12), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.08), transparent 40%);
   z-index: 0;
   pointer-events: none;
 }
@@ -2803,59 +2952,84 @@ p {
   .flow-wrapper {
     grid-template-columns: 1fr;
     gap: 30px;
+    padding: 20px 0;
   }
 
   .flow-images {
-    min-height: auto;
-    gap: 30px;
-    order: 1;
-  }
-
-  .flow-image-item img {
-    max-width: 100%;
-  }
-
-  .flow-line {
-    order: 2;
-    flex-direction: row;
-    justify-content: center;
-    padding: 20px 0;
-    gap: 10px;
-  }
-
-  .flow-line::before {
     display: none;
   }
 
-  .flow-step-number {
-    margin: 0;
-    width: 50px;
-    height: 50px;
-    position: static;
-    transform: none;
-    justify-content: flex-start;
-    padding-top: 10px;
-  }
-  
-  .flow-step-number .step-label {
-    font-size: 0.55rem;
-    margin-top: 0;
-  }
-  
-  .flow-step-number .step-num {
-    font-size: 1.2rem;
+  .flow-line {
+    display: none;
   }
 
   .flow-steps {
-    order: 3;
-    gap: 24px;
+    order: 1;
+    gap: 20px;
     max-width: 100%;
-    padding-top: 0;
+    padding: 0 10px 0 20px;
+    position: relative;
+  }
+
+  .flow-steps::before {
+    content: '';
+    position: absolute;
+    left: 32px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: rgba(37, 99, 235, 0.15);
+    z-index: 0;
   }
 
   .flow-steps .step-card {
-    padding: 24px;
+    padding: 20px 20px 20px 55px;
     min-height: auto;
+    border-left: none;
+    background: var(--white);
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .flow-steps .step-card::after {
+    content: attr(data-step);
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 26px;
+    height: 26px;
+    background: var(--blue);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-en);
+    font-size: 0.85rem;
+    font-weight: bold;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+    z-index: 2;
+  }
+
+  .flow-steps .step-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .flow-steps .step-card p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .flow-steps .step-card:hover {
+    transform: none;
+  }
+
+  .flow-steps .step-card::before {
+    display: none;
   }
 
   .footer-cta {
