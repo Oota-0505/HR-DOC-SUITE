@@ -174,8 +174,27 @@ p {
 }
 
 .cta-subtitle {
-  color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.8;
   margin-bottom: var(--spacing-xl);
+  text-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-left: 20px;
+}
+
+.cta-subtitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  background: linear-gradient(180deg, var(--blue) 0%, rgba(37, 99, 235, 0.6) 100%);
+  border-radius: 2px;
 }
 
 /* Header */
