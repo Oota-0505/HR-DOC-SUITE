@@ -2153,6 +2153,7 @@ body.menu-open {
 .voice-item {
   flex: 0 0 auto;
   width: 500px;
+  height: 280px; /* 固定高さで統一 */
   padding: 48px;
   /* 透明感と光沢感を極限まで高める */
   background: linear-gradient(
@@ -2169,13 +2170,14 @@ body.menu-open {
   border-radius: 24px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px; /* 余白を縮小 */
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.3); /* ガラスの厚み表現 */
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 /* 常時表示の光沢（上部の反射） */
@@ -2237,6 +2239,7 @@ body.menu-open {
 
 .voice-item p {
   margin: 0;
+  margin-top: 4px; /* メタ情報との間隔を最小限に */
   font-size: 1.15rem; /* サイズアップ */
   line-height: 1.8;
   color: #fff;
@@ -2583,18 +2586,18 @@ body.menu-open {
   align-items: center;
   gap: 16px;
   opacity: 1;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 16px 20px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(4px);
-  transition: all 0.3s ease;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  backdrop-filter: none;
+  transition: none;
 }
 
 .service-list li:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: var(--blue-light);
-  transform: translateX(10px);
+  background: none;
+  border-color: transparent;
+  transform: none;
 }
 
 .service-list li::before {
