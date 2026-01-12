@@ -8,10 +8,8 @@ window.addEventListener('scroll', () => {
 
   if (scrollPos > heroHeight) {
     header.classList.add('scrolled');
-    if (floatingBar) floatingBar.classList.add('visible');
   } else {
     header.classList.remove('scrolled');
-    if (floatingBar) floatingBar.classList.remove('visible');
   }
 
   // HERO & PROBLEM 究極のパララックス
