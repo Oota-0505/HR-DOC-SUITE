@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新規登録 | HR DOC SUITE</title>
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <div class="auth-wrapper">
+    <!-- 左側：ログイン案内（曲線デザイン） -->
+    <div class="auth-side-info" style="clip-path: ellipse(100% 100% at 100% 50%);">
+      <h2>おかえりなさい！</h2>
+      <p>既にアカウントをお持ちの方は、こちらからログインしてください。</p>
+      <a href="login.html" class="btn-outline">ログイン</a>
+    </div>
+
+    <!-- 右側：新規登録フォーム -->
+    <div class="auth-side-form" style="order: -1;">
+      <div class="auth-logo-top" style="margin-bottom: 20px;">
+        <a href="../index.html">
+          <img src="../images/logo.png" alt="HR DOC SUITE" style="height: 40px;">
+        </a>
+      </div>
+      <h2>新規登録</h2>
+      <div class="form-container" style="max-width: 400px;">
+        <form action="#" method="post">
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="お名前" required>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="メールアドレス" required>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-phone"></i>
+            <input type="tel" placeholder="電話番号（任意）">
+          </div>
+          <div class="input-field">
+            <i class="fas fa-map-marker-alt"></i>
+            <input type="text" placeholder="住所（任意）">
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="パスワード" required>
+          </div>
+          <button type="submit" class="btn-solid">登録する</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<!-- 
+■ ソースファイル：
+wp-content\themes\（テーマ名）\page-templates\page-register.php
+
+■ ユーザー情報を入力
+
+<input type="text" class="form-control" name="name" required id="fullName">
+
+<input type="email" name="email" required class="form-control" id="email">
+
+<input type="tel" class="form-control" name="phone" id="phone">
+
+<input type="text" name="address" class="form-control" id="address">
+
+<input type="password" name="password" class="form-control" id="password" required> -->

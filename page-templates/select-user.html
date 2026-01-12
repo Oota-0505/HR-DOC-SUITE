@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ユーザー選択 | HR DOC SUITE</title>
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <div class="auth-container-single">
+    <div class="auth-logo" style="margin-bottom: 30px; text-align: center;">
+      <a href="../index.html">
+        <img src="../images/logo.png" alt="HR DOC SUITE" style="height: 45px;">
+      </a>
+    </div>
+
+    <h2 style="text-align: center; margin-bottom: 30px; color: var(--navy); font-weight: 800;">ユーザー選択</h2>
+    
+    <div class="form-container" style="max-width: 100%;">
+      <form class="auth-form" action="#" method="post">
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px; display: block;">管理対象ユーザーを選択してください</label>
+          <div class="input-field">
+            <i class="fas fa-users"></i>
+            <select name="selected_user" style="background: transparent; border: none; outline: none; width: 100%; font-size: 1rem; color: var(--navy); cursor: pointer;">
+              <option value="" disabled selected>選択してください</option>
+              <option value="1">株式会社サンプル - 田中 太郎</option>
+              <option value="2">デモ商事株式会社 - 佐藤 次郎</option>
+              <option value="3">テスト・テクノロジー - 鈴木 花子</option>
+              <option value="4">HR DOC SUITE 事務局</option>
+            </select>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn-solid">選択して管理画面へ</button>
+      </form>
+
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="login.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">
+          <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>ログイン画面に戻る
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<!-- 
+■ ソースファイル：
+wp-content\themes\（テーマ名）\page-templates\page-select-user.php
+
+■ DBからユーザ情報を取得
+
+global $wpdb;
+
+$custom_user = $wpdb->get_results(
+    $wpdb->prepare(
+        "SELECT * FROM {$wpdb->prefix}custom_users"
+    )
+); -->

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マイページ | HR DOC SUITE</title>
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <div class="mypage-container">
+    <div class="mypage-card">
+      <h2 class="mypage-title">マイページ</h2>
+
+      <!-- プランセクション -->
+      <div class="section-group">
+        <h3>プラン</h3>
+        <table class="mypage-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">プラン名</th>
+              <th style="width: 45%;">内容</th>
+              <th style="width: 20%;">価格（税込）</th>
+              <th style="width: 10%;" class="selection-cell">選択</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="plan-name">基本プラン</td>
+              <td class="content-list">
+                ・月1 PDF（10〜15ページ）<br>
+                ・写真添削 3枚（改善ポイント3つ）
+              </td>
+              <td class="price-cell">¥2,178</td>
+              <td class="selection-cell">
+                <label class="checkbox-container" style="justify-content: center; margin: 0;">
+                  <input type="radio" name="plan_select" value="basic" checked>
+                  <span class="checkmark" style="border-radius: 50%;"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td class="plan-name">プレミアムプラン</td>
+              <td class="content-list">
+                ・月1 PDF（10〜15ページ）<br>
+                ・写真添削 10枚（改善ポイント3つ）<br>
+                ・PDFファイルアーカイブ見放題
+              </td>
+              <td class="price-cell">¥5,478</td>
+              <td class="selection-cell">
+                <label class="checkbox-container" style="justify-content: center; margin: 0;">
+                  <input type="radio" name="plan_select" value="premium">
+                  <span class="checkmark" style="border-radius: 50%;"></span>
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- オプションセクション -->
+      <div class="section-group">
+        <h3>オプション</h3>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -15px; margin-bottom: 15px;">必要なときだけ追加できる "軽い課金"</p>
+        <table class="mypage-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">オプション名</th>
+              <th style="width: 40%;">内容</th>
+              <th style="width: 20%;">価格（税込）</th>
+              <th style="width: 15%;">セット数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="plan-name">見える化ガイド（赤線）</td>
+              <td class="content-list">構図・余白・焦点を赤線で示す</td>
+              <td class="price-cell">¥550</td>
+              <td><input type="number" class="mypage-input-qty" value="0" min="0"></td>
+            </tr>
+            <tr>
+              <td class="plan-name">構図リメイク（トリミング2案）</td>
+              <td class="content-list">あなたの写真をプロ構図に組み直し</td>
+              <td class="price-cell">¥1,100</td>
+              <td><input type="number" class="mypage-input-qty" value="0" min="0"></td>
+            </tr>
+            <tr>
+              <td class="plan-name">追加添削（1枚）</td>
+              <td class="content-list">もっと見てほしい人向け</td>
+              <td class="price-cell">¥330</td>
+              <td><input type="number" class="mypage-input-qty" value="0" min="0"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 合計・決済エリア -->
+      <div class="mypage-footer">
+        <div class="total-amount">
+          ■ 合計金額（税込）： <span>¥2,178</span>
+        </div>
+        <button type="submit" class="btn-checkout">決済</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WordPress化の際のロジック用コメント
+  <?php
+  // 管理者チェック (role_type == 1)
+  // if ($is_admin) :
+  //   数量入力やプラン選択を有効化（デフォルト）
+  // else :
+  //   申込履歴の表示モードに変更、入力を readonly にする
+  // endif;
+  ?>
+  -->
+</body>
+</html>
