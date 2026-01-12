@@ -446,15 +446,16 @@ body.menu-open {
 }
 
 .btn-login {
-  background: transparent;
-  color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: #ffffff;
+  color: #0d1b3e;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-login:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: #fff;
+  background: #f1f5f9;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .btn-register {
