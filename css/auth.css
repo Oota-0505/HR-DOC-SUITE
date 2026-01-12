@@ -61,9 +61,7 @@ body::after {
   width: 100%;
   max-width: 1000px;
   min-height: 600px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #ffffff;
   border-radius: 30px;
   display: flex;
   overflow: hidden;
@@ -77,9 +75,7 @@ body::after {
 .auth-container-single {
   width: 100%;
   max-width: 480px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #ffffff;
   border-radius: 24px;
   padding: 40px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -124,7 +120,7 @@ body::after {
   border: 2px solid var(--white);
   background: transparent;
   color: var(--white);
-  border-radius: 30px;
+  border-radius: 12px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -140,7 +136,7 @@ body::after {
 /* 右側：フォームエリア */
 .auth-side-form {
   flex: 1.2;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -190,23 +186,29 @@ body::after {
 
 .btn-solid {
   width: 100%;
-  background-color: var(--primary);
-  border: none;
-  outline: none;
-  height: 50px;
-  border-radius: 50px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--navy) 100%);
   color: #fff;
+  padding: 18px 32px;
+  border-radius: 12px;
   font-weight: 700;
-  margin: 10px 0;
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
-  transition: 0.3s;
-  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  margin: 10px 0;
 }
 
 .btn-solid:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4);
+  background: linear-gradient(135deg, #3b82f6 0%, var(--primary) 100%);
 }
 
 .social-text {
@@ -305,9 +307,7 @@ body::after {
 }
 
 .mypage-card {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: #ffffff;
   border-radius: 24px;
   padding: 40px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -439,22 +439,22 @@ body::after {
 }
 
 .btn-checkout {
-  padding: 14px 60px;
-  background-color: var(--primary);
+  padding: 18px 60px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--navy) 100%);
   color: white;
-  border-radius: 50px;
+  border-radius: 12px;
   font-weight: 700;
   font-size: 1.1rem;
   border: none;
   cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
 }
 
 .btn-checkout:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 15px 25px rgba(37, 99, 235, 0.3);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.4);
+  background: linear-gradient(135deg, #3b82f6 0%, var(--primary) 100%);
 }
 
 /* レスポンシブ */
