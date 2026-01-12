@@ -13,14 +13,34 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <div class="logo" aria-label="HR DOC SUITE">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="logo-icon"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-        HR DOC <span class="logo-accent">SUITE</span>
+        <img src="images/logo.png" alt="HR DOC SUITE" class="logo-img">
       </div>
       <nav class="nav">
         <a href="#reasons" class="nav-link">REASON</a>
         <a href="#services" class="nav-link">SERVICE</a>
-        <a href="#pricing" class="nav-link">PLAN</a>
         <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#pricing" class="nav-link">PLAN</a>
+        <a href="#company" class="nav-link">COMPANY</a>
+      </nav>
+
+      <button class="menu-toggle" aria-label="メニューを開く">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav">
+      <nav class="mobile-nav-inner">
+        <a href="#reasons" class="mobile-nav-link">REASON</a>
+        <a href="#services" class="mobile-nav-link">SERVICE</a>
+        <a href="#faq" class="mobile-nav-link">FAQ</a>
+        <a href="#pricing" class="mobile-nav-link">PLAN</a>
+        <a href="#company" class="mobile-nav-link">COMPANY</a>
+        <div class="mobile-nav-footer">
+          <a href="#cta" class="btn btn-entry-hero mobile-menu-btn">詳しく見る →</a>
+        </div>
       </nav>
     </div>
   </header>
@@ -32,38 +52,40 @@
         <div class="hero-bg-text-scrolling">HR DOC SUITE STANDARD</div>
       </div>
       
-      <div class="container hero-inner">
-        <div class="hero-glass-panel">
-          <div class="hero-content">
-            <p class="hero-label">/ DOCUMENT × STANDARD /</p>
-            <h1 class="hero-title">
-              <span class="t-line">採用と評価の</span><br>
-              <span class="t-line">"書類作り"に、</span><br>
-              <span class="t-line">共通の型を。</span>
-            </h1>
-            <p class="hero-lead">
-              人が増えるほど、書類も増える。HR DOC SUITE は、中小企業の人事・経営者向けに、採用・評価に必要なドキュメントの型をまとめて提供する月額制のテンプレートサービスです。
-            </p>
-            <div class="cta-row">
-              <a class="btn btn-entry-hero" href="#cta">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-                ENTRY →
-              </a>
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-glass-panel">
+            <div class="hero-content">
+              <p class="hero-label">/ DOCUMENT × STANDARD /</p>
+              <h1 class="hero-title">
+                <span class="t-line">採用と評価の</span><br>
+                <span class="t-line">"書類作り"に、</span><br>
+                <span class="t-line">共通の型を。</span>
+              </h1>
+              <p class="hero-lead">
+                人が増えるほど、書類も増える。HR DOC SUITE は、中小企業の人事・経営者向けに、採用・評価に必要なドキュメントの型をまとめて提供する月額制のテンプレートサービスです。
+              </p>
+              <div class="cta-row">
+                <a class="btn btn-entry-hero" href="#cta">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                  詳しく見る →
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="hero-visual-wrap">
-          <div class="hero-main-visual">
-            <div class="hero-slider">
-              <img src="images/hero-1.png" alt="ドキュメント作成の様子" class="hero-v-img active">
-              <img src="images/hero-2.png" alt="社内ミーティングの様子" class="hero-v-img">
+          
+          <div class="hero-visual-wrap">
+            <div class="hero-main-visual">
+              <div class="hero-slider">
+                <img src="images/hero-1.png" alt="ドキュメント作成の様子" class="hero-v-img active">
+                <img src="images/hero-2.png" alt="社内ミーティングの様子" class="hero-v-img">
+              </div>
+              <div class="hero-visual-overlay"></div>
             </div>
-            <div class="hero-visual-overlay"></div>
-          </div>
-          <div class="hero-floating-elements">
-            <div class="floating-item item-1"></div>
-            <div class="floating-item item-2"></div>
+            <div class="hero-floating-elements">
+              <div class="floating-item item-1"></div>
+              <div class="floating-item item-2"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -506,7 +528,7 @@
               <div class="plan-action">
                 <a class="btn btn-entry-hero" href="#cta">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-                  このプランで検討
+                  まずは試してみる
                 </a>
               </div>
             </div>
@@ -566,7 +588,7 @@
               <div class="plan-action">
                 <a class="btn btn-entry-hero" href="#cta">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-                  まずはスタンダード
+                  おすすめプラン
                 </a>
               </div>
             </div>
@@ -626,7 +648,7 @@
               <div class="plan-action">
                 <a class="btn btn-entry-hero" href="#cta">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-                  高度化を進める
+                  本格運用を始める
                 </a>
               </div>
             </div>
@@ -681,12 +703,12 @@
         <div class="cta-inner">
           <div class="cta-content">
             <p class="cta-label">/ お申し込み /</p>
-            <h2 class="cta-title">ENTRY</h2>
+            <h2 class="cta-title">Download</h2>
             <p class="cta-subtitle">採用と評価の"ドキュメント作り"を、標準化しませんか。</p>
             <div class="cta-button-wrapper">
               <a href="#" class="btn btn-entry-hero">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
-                ENTRY →
+                詳しく見る →
               </a>
             </div>
           </div>
@@ -694,9 +716,9 @@
       </div>
       <div class="cta-slogan-wrapper">
         <div class="cta-slogan">
-          <span class="cta-slogan-text">SPEED TO LEAD THE WAY</span>
-          <span class="cta-slogan-text">SPEED TO LEAD THE WAY</span>
-          <span class="cta-slogan-text">SPEED TO LEAD THE WAY</span>
+          <span class="cta-slogan-text">HR DOC SUITE</span>
+          <span class="cta-slogan-text">HR DOC SUITE</span>
+          <span class="cta-slogan-text">HR DOC SUITE</span>
         </div>
       </div>
     </section>
@@ -775,7 +797,9 @@
 
   <footer class="site-footer" id="footer">
     <div class="container footer-inner">
-      <div class="footer-logo">HR DOC SUITE</div>
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="HR DOC SUITE" class="footer-logo-img">
+      </div>
       <div class="footer-social">
         <a href="#" class="footer-social-link" aria-label="X (Twitter)">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>

@@ -185,8 +185,10 @@ if (flowSection && flowLine && flowAnimatedArrow) {
           if (flowStepNumbers[index]) {
             const cardRect = card.getBoundingClientRect();
             const cardTop = cardRect.top - flowLineRect.top;
-            const cardCenter = cardTop + cardRect.height / 2;
-            const numberTop = cardCenter - flowLineInnerTop;
+            // カードの中心ではなく、タイトルの位置（上部）に合わせて配置
+            // padding-top(28px) + title heightの半分程度 = 約50px
+            const targetPos = cardTop + 50; 
+            const numberTop = targetPos - flowLineInnerTop;
             flowStepNumbers[index].style.top = `${numberTop}px`;
           }
         });
@@ -317,3 +319,21 @@ if (planCards.length > 0 && planDetails.length > 0) {
     });
   });
 }
+
+// ハンバーガーメニュー制御
+const menuToggle = document.querySelector('.menu-toggle');
+const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+const body = document.body;
+
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    body.classList.toggle('menu-open');
+  });
+}
+
+// リンククリック時にメニューを閉じる
+mobileNavLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    body.classList.remove('menu-open');
+  });
+});
