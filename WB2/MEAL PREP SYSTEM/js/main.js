@@ -25,6 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
       if (heroImagesPc) heroImagesPc.style.transform = `translateY(${parallaxY * 0.6}px)`;
       if (heroScrollWrap) heroScrollWrap.style.transform = `translateX(-50%) translateY(${parallaxY * 0.5}px)`;
     }
+
+    // PROBLEM パララックス：画像がスクロールより遅れて動く（全デバイス共通）
+    const problemSection = document.getElementById('problem');
+    const problemImage = problemSection?.querySelector('.problem-image');
+    if (problemSection && problemImage) {
+      const rect = problemSection.getBoundingClientRect();
+      const viewportH = window.innerHeight;
+      if (rect.top < viewportH && rect.bottom > 0) {
+        const parallaxY = rect.top * 0.15;
+        problemImage.style.transform = `translateY(${parallaxY}px)`;
+      } else {
+        problemImage.style.transform = '';
+      }
+    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
