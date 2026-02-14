@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/*
+Theme Name:WSC8
+Theme URI:http://wsc.studiobrain.net/
+Version:1.3.1
+Author:StudioBRAIN
+Author URI:http://www.studiobrain.net/
+License:GNU General Public License v2.0
+License URI:http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/*-----------------------------------------------------------------------------
+ WordPress CMS Theme. Based on work by WSC Project:http://wsc.studiobrain.net/
+---------------------------------------------------------------------------- */
+
+* {padding: 0; margin: 0;}@media screen and (min-width:769px) {} @media screen and (max-width:768px) {}

@@ -1,0 +1,272 @@
+/**
+ * PERSONAL EDITOR 認証ページ用CSS
+ * サイトカラー: #F97316 (オレンジ), #1F2933 (ダーク)
+ * ログインページ：お問い合わせセクションの雰囲気に合わせたデザイン
+ *
+ * @package PERSONAL_EDITOR
+ * @since 1.0.0
+ */
+
+/* ========================================
+   pe-login：ログインページ（新デザイン）
+   ======================================== */
+.pe-login {
+  font-family: "Noto Sans JP", sans-serif;
+  min-height: 100vh;
+  background-color: #1F2933;
+  background-image: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(249, 115, 22, 0.12) 0%, transparent 50%);
+}
+
+/* ヘッダー */
+.pe-login__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.5rem;
+  background: rgba(31, 41, 51, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.pe-login__header-inner {
+  max-width: 1225px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pe-login__logo {
+  display: inline-block;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.pe-login__logo img {
+  height: 32px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  display: block;
+}
+
+.pe-login__back {
+  color: #F3F4F6;
+  text-decoration: none;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.3s;
+}
+
+.pe-login__back:hover {
+  opacity: 0.8;
+}
+
+/* メインエリア（お問い合わせセクション風） */
+.pe-login__main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem 4rem;
+}
+
+.pe-login__card {
+  width: 100%;
+  max-width: 440px;
+  padding: 3rem 2.5rem;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* サブタイトル（p-contact__subtitle 風） */
+.pe-login__subtitle {
+  font-family: "Heebo", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.4em;
+  color: #F97316;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+}
+
+/* タイトル */
+.pe-login__title {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  color: #1F2933;
+  text-align: center;
+  margin: 0 0 2rem;
+}
+
+/* エラー */
+.pe-login__error {
+  color: #dc2626;
+  background: #fef2f2;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  border: 1px solid #fecaca;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* フォーム */
+.pe-login__form-wrap {
+  margin-bottom: 1.5rem;
+}
+
+.pe-login__field {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  align-items: center;
+  background: #f3f4f6;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  height: 3.125rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pe-login__field:focus-within {
+  border-color: #F97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.12);
+}
+
+.pe-login__field i {
+  color: #9ca3af;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.pe-login__field input {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1F2933;
+  width: 100%;
+}
+
+.pe-login__field input::placeholder {
+  color: #9ca3af;
+}
+
+/* 次回から自動ログイン */
+.pe-login__remember {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  user-select: none;
+}
+
+.pe-login__remember input {
+  display: none;
+}
+
+.pe-login__check {
+  width: 1.125rem;
+  height: 1.125rem;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.25rem;
+  flex-shrink: 0;
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.pe-login__remember input:checked + .pe-login__check {
+  background: #F97316;
+  border-color: #F97316;
+}
+
+.pe-login__remember input:checked + .pe-login__check::after {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  top: 0.1rem;
+  width: 0.35rem;
+  height: 0.6rem;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.pe-login__label {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* 送信ボタン（c-button 風・サイト統一） */
+.pe-login__submit {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background-color: #F97316;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.3s, transform 0.2s;
+}
+
+.pe-login__submit:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* お問い合わせリンク */
+.pe-login__cta {
+  text-align: center;
+  margin: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.pe-login__cta a {
+  color: #F97316;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+
+.pe-login__cta a:hover {
+  opacity: 0.8;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 767px) {
+  .pe-login__main {
+    padding: 5rem 1.25rem 3rem;
+  }
+
+  .pe-login__card {
+    padding: 2rem 1.5rem;
+  }
+
+  .pe-login__subtitle {
+    font-size: 0.875rem;
+    letter-spacing: 0.3em;
+  }
+
+  .pe-login__title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}

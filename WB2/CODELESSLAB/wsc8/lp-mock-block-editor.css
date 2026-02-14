@@ -1,0 +1,14 @@
+.lp-mock-preview{
+  margin-top: 12px;
+  padding: 16px;
+  border: 1px dashed rgba(0,0,0,.25);
+  border-radius: 10px;
+}
+.lp-mock-preview img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.lp-mock__link{
+  text-decoration: underline;
+}

@@ -1,0 +1,190 @@
+/* =========================
+  wsc8 マイページ・認証系専用
+  main#join スコープで LP style.php との干渉を防止
+========================= */
+:root {
+  --c1: #3B82F6;
+  --c2: #2169DE;
+  --font_color: #0f172a;
+  --bg_color: #ffffff;
+  --border_color: #e5e7eb;
+  --muted_color: #64748b;
+}
+
+body.wsc8-auth-page {
+  margin: 0;
+  padding: 0;
+  background: var(--bg_color) url(images/bg.webp) no-repeat center top;
+  background-size: 100% auto;
+  color: var(--font_color);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  width: 100%;
+  min-height: 100%;
+  font-size: 16px;
+}
+
+main#join {
+  overflow: visible;
+  padding-bottom: 80px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+main#join .wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+main#join li { list-style-type: none; }
+main#join .tac { text-align: center; }
+main#join h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+main#join h2 { font-size: 1.2rem; margin-top: 2rem; margin-bottom: 0.5rem; }
+main#join a { color: var(--c1); text-decoration: none; }
+main#join a:hover { color: var(--c2); }
+
+main#join .card {
+  border: 1px solid var(--border_color);
+  border-radius: 8px;
+  padding: 16px;
+  background: #fff;
+  margin-bottom: 16px;
+}
+
+main#join .action-links { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+main#join .action-links a { display: inline-block; padding: 10px 18px; border-radius: 6px; box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.15); font-weight: bold; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+main#join .action-links a:hover { transform: translateY(1px); box-shadow: 2px 2px 3px 0 rgba(0,0,0,0.15); }
+main#join .action-links a:first-child { background: linear-gradient(180deg, #51C3D5 0%, #2B5AF4 100%); color: #fff; }
+main#join .action-links a:last-child { background: linear-gradient(180deg, #FFF 0%, #E8E4E4 100%); color: #0f172a; }
+
+main#join input[type="text"],
+main#join input[type="email"],
+main#join input[type="password"],
+main#join input[type="number"],
+main#join input[type="tel"],
+main#join textarea,
+main#join select {
+  width: 100%;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border_color);
+  background: #fff;
+  box-sizing: border-box;
+}
+
+main#join textarea { resize: vertical; }
+main#join form label { display: block; margin-bottom: 8px; }
+main#join form button,
+main#join .btn {
+  position: relative;
+  display: inline-block;
+  padding: 16px 40px;
+  background: linear-gradient(180deg, #51C3D5 0%, #2B5AF4 100%);
+  box-shadow: 3px 3px 4px 0 rgba(0,0,0,0.15);
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 4px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+main#join table { border-collapse: collapse; width: 100%; font-size: 14px; }
+main#join th, main#join td { border: 1px solid var(--border_color); padding: 8px; text-align: left; }
+main#join th { background: #f8fafc; }
+
+body.wsc8-auth-page.page-login main#join { min-height: 80vh; display: flex; align-items: center; }
+
+main#join .box label { display: block; margin: 12px 0 6px; font-weight: 900; font-size: 12px; }
+main#join .box input, main#join .box select { width: 100%; height: 44px; border: 1px solid #ddd; border-radius: 10px; padding: 0 12px; box-sizing: border-box; }
+main#join .box .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+main#join .box .btn { display: block; width: 100%; margin-top: 12px; }
+main#join .box > p > a.btn { width: auto; display: inline-block; }
+main#join .box .muted { color: #666; font-size: 12px; text-align: center; margin-top: 10px; }
+main#join section { margin: 50px auto 0; padding: 0; }
+main#join .box {
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 14px;
+  background: rgba(255,255,255,.7);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 999px) {
+  body.wsc8-auth-page::before { content: ""; position: fixed; inset: 0; z-index: -1; background: #e6e7f3; }
+  main#join label { width: 100%; text-align: left; }
+  main#join .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  main#join th, main#join td { word-break: break-word; width: 40%; background: #fff; }
+  main#join .sptal { text-align: left !important; }
+  main#join section .pricecell { width: 100%; display: flex; justify-content: flex-start; flex-direction: column; gap: 16px; }
+  main#join section .pricecell .cell { position: relative; display: flex; justify-content: flex-start; align-items: center; flex-direction: column; flex-wrap: wrap; width: 100%; padding: 16px; box-sizing: border-box; background: rgba(255,255,255,.7); border-radius: 8px; backdrop-filter: blur(12px); }
+  main#join section .pricecell .cell .plangrade { position: relative; display: block; width: 100%; border-radius: 8px; background: #51C3D5; color: #fff; text-align: center; padding: 16px; font-size: 16px; margin-bottom: 16px; box-sizing: border-box; }
+  main#join section .pricecell .cell:nth-of-type(1) .plangrade { background: #3B82F6; }
+  main#join section .pricecell .cell:nth-of-type(2) .plangrade { background: #1C72FF; }
+  main#join section .pricecell .cell:nth-of-type(3) .plangrade { background: #0357E0; }
+  main#join section .pricecell .cell .price { font-size: 44px; display: block; width: 100%; font-weight: 700; text-align: center; margin: 0 auto 16px; padding-bottom: 24px; border-bottom: 1px dotted #94A3B8; }
+  main#join section .pricecell .cell .price .lrg { display: inline; font-size: 21px; font-weight: normal; padding-left: 2px; }
+  main#join section .pricecell .cell .price .sml { font-size: 16px; display: block; font-weight: 500; margin-top: 4px; }
+  main#join section .pricecell .cell .price span { color: #0f172a !important; }
+  main#join section .pricecell .cell ul { display: block; width: 100%; margin-bottom: 0; border-bottom: 1px dotted #94A3B8; padding-bottom: 16px; }
+  main#join section .pricecell .cell ul li { margin-bottom: 8px; width: 100%; font-weight: normal; font-size: 14px; }
+  main#join section .pricecell .cell ul li:last-child { margin-bottom: 0; }
+  main#join section .pricecell .cell label { width: 100%; margin-top: 16px; background: #fafafa; padding: 4px; box-sizing: border-box; text-align: center; font-size: 18px; font-weight: bold; }
+  main#join .optionselect { width: 100%; display: block; padding: 16px; box-sizing: border-box; background: rgba(255,255,255,.7); border-radius: 8px; }
+  main#join .optitem { width: 100%; display: flex; }
+  main#join .sum { padding: 16px; box-sizing: border-box; background: rgba(255,255,255,.7); border-radius: 8px; margin-bottom: 16px; }
+  main#join .sum .yen { margin: 0 auto; text-align: center; font-size: 32px; font-weight: bold; }
+}
+
+@media (min-width: 1000px) and (max-width: 1291px) {
+  body.wsc8-auth-page::before { content: ""; position: fixed; inset: 0; z-index: -1; background: #e6e7f3; font-size: 14px; }
+  main#join label { width: 100%; text-align: left; }
+  main#join .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  main#join th, main#join td { word-break: break-word; width: 40%; background: #fff; }
+  main#join .sptal { text-align: left !important; }
+  main#join section .pricecell { width: 100%; display: flex; justify-content: flex-start; gap: 10px; }
+  main#join section .pricecell .cell { position: relative; display: flex; justify-content: flex-start; align-items: center; flex-wrap: wrap; width: 33%; padding: 16px 8px; box-sizing: border-box; background: rgba(255,255,255,.7); border-radius: 8px; backdrop-filter: blur(12px); }
+  main#join section .pricecell .cell .plangrade { position: relative; display: block; width: 100%; border-radius: 8px; background: #51C3D5; color: #fff; text-align: center; padding: 16px; font-size: 16px; margin-bottom: 16px; box-sizing: border-box; }
+  main#join section .pricecell .cell:nth-of-type(1) .plangrade { background: #3B82F6; }
+  main#join section .pricecell .cell:nth-of-type(2) .plangrade { background: #1C72FF; }
+  main#join section .pricecell .cell:nth-of-type(3) .plangrade { background: #0357E0; }
+  main#join section .pricecell .cell .price { font-size: 44px; display: block; width: 100%; font-weight: 700; text-align: center; margin: 0 auto 16px; padding-bottom: 24px; border-bottom: 1px dotted #94A3B8; }
+  main#join section .pricecell .cell .price .lrg { display: inline; font-size: 21px; font-weight: normal; padding-left: 2px; }
+  main#join section .pricecell .cell .price .sml { font-size: 16px; display: block; font-weight: 500; margin-top: 4px; }
+  main#join section .pricecell .cell .price span { color: #0f172a !important; }
+  main#join section .pricecell .cell ul { display: block; width: 100%; margin-bottom: 0; border-bottom: 1px dotted #94A3B8; padding-bottom: 16px; min-height: 26vh; }
+  main#join section .pricecell .cell ul li { margin-bottom: 8px; width: 100%; font-weight: normal; font-size: 14px; }
+  main#join section .pricecell .cell ul li:last-child { margin-bottom: 0; }
+  main#join section .pricecell .cell label { width: 100%; margin-top: 16px; background: #fafafa; padding: 4px; box-sizing: border-box; text-align: center; font-size: 18px; font-weight: bold; }
+  main#join .optionselect { width: 100%; display: flex; flex-wrap: wrap; padding: 16px; box-sizing: border-box; background: rgba(255,255,255,.7); border-radius: 8px; }
+  main#join .optitem { width: 50%; display: flex; }
+  main#join .sum { padding: 16px; box-sizing: border-box; background: rgba(255,255,255,.7); border-radius: 8px; margin-bottom: 16px; }
+  main#join .sum .yen { margin: 0 auto; text-align: center; font-size: 32px; font-weight: bold; }
+  main#join form { width: 100%; display: block; }
+}
+
+@media (min-width: 1200px) {
+  main#join section .pricecell { width: 100%; display: flex; justify-content: flex-start; gap: 16px; }
+  main#join section .pricecell .cell { position: relative; display: flex; justify-content: flex-start; align-items: center; flex-direction: column; flex-wrap: wrap; width: 33%; padding: 24px; box-sizing: border-box; background: rgba(255,255,255,.7); border-radius: 8px; backdrop-filter: blur(12px); }
+  main#join section .pricecell .cell .plangrade { position: relative; display: block; width: 100%; border-radius: 8px; background: #51C3D5; color: #fff; text-align: center; padding: 16px; font-size: 18px; margin-bottom: 16px; box-sizing: border-box; }
+  main#join section .pricecell .cell:nth-of-type(1) .plangrade { background: #3B82F6; }
+  main#join section .pricecell .cell:nth-of-type(2) .plangrade { background: #1C72FF; }
+  main#join section .pricecell .cell:nth-of-type(3) .plangrade { background: #0357E0; }
+  main#join section .pricecell .cell .price { font-size: 40px; display: block; width: 100%; font-weight: 700; text-align: center; margin: 0 auto 16px; padding-bottom: 16px; border-bottom: 1px dotted #94A3B8; }
+  main#join section .pricecell .cell .price .lrg { display: inline; font-size: 14px; font-weight: bold; padding-left: 2px; }
+  main#join section .pricecell .cell .price .sml { font-size: 12px; display: block; font-weight: 500; margin-top: 4px; }
+  main#join section .pricecell .cell .price span { color: #0f172a !important; }
+  main#join section .pricecell .cell ul { display: block; width: 100%; margin-bottom: 0; border-bottom: 1px dotted #94A3B8; padding-bottom: 16px; min-height: 11em; }
+  main#join section .pricecell .cell ul li { margin-bottom: 8px; width: 100%; font-weight: normal; font-size: 15px; }
+  main#join section .pricecell .cell ul li:last-child { margin-bottom: 0; }
+  main#join section .pricecell .cell label { width: 100%; margin-top: 16px; background: #fafafa; padding: 4px; box-sizing: border-box; text-align: center; font-size: 18px; font-weight: bold; }
+  main#join .optionselect { width: 100%; display: flex; flex-wrap: wrap; padding: 32px; box-sizing: border-box; background: rgba(255,255,255,.7); border-radius: 8px; }
+  main#join .optitem { width: 33%; display: flex; }
+  main#join .sum { padding: 24px; box-sizing: border-box; background: rgba(255,255,255,.7); border-radius: 8px; margin-bottom: 16px; }
+  main#join .sum .yen { margin: 0 auto; text-align: center; font-size: 32px; font-weight: bold; }
+}
