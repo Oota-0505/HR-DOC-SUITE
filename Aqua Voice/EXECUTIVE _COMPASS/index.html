@@ -7,9 +7,29 @@
     <meta name="description" content="企業の持続的成長を担うエグゼクティブ人材の育成を支援。経営シミュレーション体験を通じて、未来の経営人材を創るための人材育成プログラム。">
     <link rel="icon" href="images/header-logo.png" type="image/png">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <!-- Tailwind CSS（バージョン固定＋カスタム色は CSS 変数と同期） -->
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                /* :root と同一（opacity 修飾子 bg-*/50 等が正しく解決されるよう hex を使用） */
+                colors: {
+                    'navy-dark': '#0a1628',
+                    'navy-primary': '#1a2942',
+                    'navy-medium': '#2d3e5f',
+                    'navy-light': '#4a5f7f',
+                    'silver-light': '#e8ecf1',
+                    'silver-medium': '#c5cdd6',
+                    'silver-dark': '#8b95a5',
+                    'gold-accent': '#c9a961',
+                    'white-pure': '#ffffff',
+                },
+            },
+        },
+    };
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
